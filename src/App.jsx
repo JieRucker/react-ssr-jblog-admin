@@ -1,52 +1,90 @@
 import React from "react";
 import {
-  Switch,
-  Redirect,
-  NavLink
+    Switch,
+    Redirect,
+    NavLink, Route,
+    BrowserRouter as Router,
 } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import { router, NestedRoute, StatusRoute} from "./router";
+import {Helmet} from "react-helmet";
+import {router} from "./router";
+
+// import AuthRouter from './components/auth/AuthRouter';
+import Login from './views/login/login';
+import Register from './views/login/register';
+// import Index from './views/layout';
+// import NotFound from './views/404/notFound';
+
 import "./assets/app.css";
 
+{/*<Router>
+    <div style={{height: '100%'}}>
+        <Switch>
+            <Route exact path="/" render={() => <Redirect to="/app/article/list" push/>}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/register" component={Register}/>
+            <AuthRouter path='/app' component={Index}></AuthRouter>
+            <Route path='/404' component={NotFound}/>
+            <Redirect from='*' to='/404'/>
+        </Switch>
+    </div>
+</Router>*/
+}
+
 class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Helmet>
-          <title>This is App page</title>
-          <meta name="keywords" content="React SSR"></meta>
-        </Helmet>
-        <div className="title">This is a react ssr demo</div>
-        <ul className="nav">
-          <li><NavLink to="/bar">Bar</NavLink></li>
-          <li><NavLink to="/baz">Baz</NavLink></li>
-          <li><NavLink to="/foo">Foo</NavLink></li>
-          <li><NavLink to="/top-list">TopList</NavLink></li>
-        </ul>
-        <div className="view">
-          <Switch>
-            {
-              router.map((route, i) => 
-                <NestedRoute key={i} {...route}/>
-              )
-            }
-            <Redirect from="/" to="/bar" exact/>
-            <StatusRoute code={404}>
-              <div>
-                <h1>Not Found</h1>
-              </div>
-            </StatusRoute>
-            {/*<Route path="/bar" component={Bar} />
-            <Route path="/baz" component={Baz} />
-            <Route path="/foo" component={Foo} />
-            <Route path="/top-list" component={TopList} />
-            <Redirect from="/" to="/bar" exact />
-            */}
-          </Switch>
-        </div>
-      </div>
-    );
-  }
+    render() {
+        return (
+
+            <div style={{height: '100%'}}>
+                <Switch>
+                    <Route exact path="/" render={() => <Redirect to="/app/article/list" push/>}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/register" component={Register}/>
+                    {/*<AuthRouter path='/app' component={Index}></AuthRouter>*/}
+                    {/*<Route path='/404' component={NotFound}/>*/}
+                    <Redirect from='*' to='/404'/>
+                </Switch>
+            </div>
+
+
+            // <div>
+            //     <Helmet>
+            //         <meta name="keywords" content="React SSR"></meta>
+            //     </Helmet>
+            //     <ul className="nav">
+            //         <li><NavLink to="/bar">1</NavLink></li>
+            //         <li><NavLink to="/baz">2</NavLink></li>
+            //         <li><NavLink to="/foo">3</NavLink></li>
+            //         <li><NavLink to="/top-list">4</NavLink></li>
+            //     </ul>
+            //     <div className="view">
+            //         <Switch>
+            //             {
+            //                 router.map((route, i) =>
+            //                     <Route key={i} path={route.path} exact={route.exact}
+            //                         /*渲染路由对应的视图组件，将路由组件的props传递给视图组件*/
+            //                            render={(props) =>
+            //                                <route.component {...props} router={route.routes}/>
+            //                            }
+            //                     />
+            //                 )
+            //             }
+            //
+            //             <Redirect from="/" to="/bar" exact/>
+            //
+            //             <Route render={({staticContext}) => {
+            //                 if (staticContext) {
+            //                     staticContext.statusCode = 404;
+            //                 }
+            //                 return <div>
+            //                     <h1>Not Found</h1>
+            //                 </div>;
+            //             }}/>
+            //
+            //         </Switch>
+            //     </div>
+            // </div>
+        );
+    }
 }
 
 export default App;
