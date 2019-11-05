@@ -46,7 +46,7 @@ class App extends React.Component {
                     <Route exact path="/" render={() => <Redirect to="/app/article/list" push/>}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/register" component={Register}/>
-                    <AuthRouter path='/app' component={Login}></AuthRouter>
+                    {/*<AuthRouter path='/app' component={Index}></AuthRouter>*/}
                     <Route path='/404' component={NotFound}/>
                     <Redirect from='*' to='/404'/>
                 </Switch>
