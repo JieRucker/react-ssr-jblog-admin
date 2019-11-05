@@ -1,43 +1,30 @@
-import { combineReducers } from "redux";
-import * as ActionTypes from "./actionTypes";
+import {combineReducers} from 'redux'
+import {user} from './user/user.redux'
+// import {sider} from './sider/sider.redux';
+// import {article_list} from './article/list.redux';
+// import {article_new} from './article/new.redux';
+// import {article_edit} from './article/edit.redux';
+// import {tags_list} from './tag/list.redux';
+// import {mine} from './setting/mine.redux';
+// import {upyun} from './setting/upyun.redux';
+// import {about} from './setting/about.redux';
+// import {works_list} from './works/list.redux';
+// import {works_new} from './works/new.redux';
+// import {works_edit} from './works/edit.redux';
+// import {upload} from './upload/upload.redux';
 
-const initialState = {
-  clientShouldLoad: true,
-  topList: [],
-  topDetail: {}
-}
-
-function clientShouldLoad(clientShouldLoad = initialState.clientShouldLoad, action) {
-  switch (action.type) {
-    case ActionTypes.SET_CLIENT_LOAD:
-      return action.clientShouldLoad;
-    default:
-      return clientShouldLoad;
-  }
-}
-
-function topList(topList = initialState.topList, action) {
-  switch (action.type) {
-    case ActionTypes.SET_TOP_LIST:
-      return action.topList;
-    default:
-      return topList;
-  }
-}
-
-function topDetail(topDetail = initialState.topDetail, action) {
-  switch (action.type) {
-    case ActionTypes.SET_TOP_DETAIL:
-      return action.topDetail;
-    default:
-      return topDetail;
-  }
-}
-
-const reducer = combineReducers({
-  clientShouldLoad,
-  topList,
-  topDetail
-});
-
-export default reducer;
+export default combineReducers({
+    user,
+    // sider,
+    // article_list,
+    // article_new,
+    // article_edit,
+    // tags_list,
+    // mine,
+    // upyun,
+    // about,
+    // works_list,
+    // works_new,
+    // works_edit,
+    // upload
+})

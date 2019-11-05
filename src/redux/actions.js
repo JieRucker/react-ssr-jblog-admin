@@ -1,5 +1,5 @@
 import { SET_CLIENT_LOAD, SET_TOP_LIST, SET_TOP_DETAIL } from "./actionTypes";
-import { getTopList, getTopDetail } from "../api";
+import { getTopList, getTopDetail } from "../api1";
 
 export function setClientLoad(clientShouldLoad) {
   return { type: SET_CLIENT_LOAD, clientShouldLoad };

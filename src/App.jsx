@@ -8,11 +8,13 @@ import {
 import {Helmet} from "react-helmet";
 import {router} from "./router";
 
-// import AuthRouter from './components/auth/AuthRouter';
+import AuthRouter from './components/auth/AuthRouter';
 import Login from './views/login/login';
 import Register from './views/login/register';
+import 'antd/dist/antd.css';
+
 // import Index from './views/layout';
-// import NotFound from './views/404/notFound';
+import NotFound from './views/404/notFound';
 
 import "./assets/app.css";
 
@@ -31,6 +33,11 @@ import "./assets/app.css";
 }
 
 class App extends React.Component {
+
+    componentDidMount(){
+
+    }
+
     render() {
         return (
 
@@ -39,8 +46,8 @@ class App extends React.Component {
                     <Route exact path="/" render={() => <Redirect to="/app/article/list" push/>}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/register" component={Register}/>
-                    {/*<AuthRouter path='/app' component={Index}></AuthRouter>*/}
-                    {/*<Route path='/404' component={NotFound}/>*/}
+                    <AuthRouter path='/app' component={Login}></AuthRouter>
+                    <Route path='/404' component={NotFound}/>
                     <Redirect from='*' to='/404'/>
                 </Switch>
             </div>

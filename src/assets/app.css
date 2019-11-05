@@ -33,3 +33,7 @@ body {
 .active {
     color: #FFFFFF;
 }
+
+#app {
+    height: 100%;
+}

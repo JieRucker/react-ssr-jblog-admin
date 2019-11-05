@@ -32,7 +32,7 @@ class LoginForm extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchCaptcha()
+        // this.props.fetchCaptcha()
     }
 
     onRegister(e) {
@@ -58,6 +58,8 @@ class LoginForm extends Component {
     }
 
     render() {
+        console.log(this)
+
         const {getFieldDecorator} = this.props.form;
         return (
             <div className="login" style={{backgroundImage: `url(${this.state.background})`}}>

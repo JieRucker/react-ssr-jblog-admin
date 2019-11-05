@@ -6,10 +6,10 @@
  * @Last Modified time: 2019/5/19 上午12:03
  */
 
-// import {message} from 'antd'
+import {message} from 'antd'
 
 // import JSEncrypt from 'jsencrypt';
-// import api from '@/api/server';
+import api from '@/api/server';
 import Cookies from 'js-cookie'
 
 /**
@@ -47,7 +47,7 @@ export function user(state = initState, action) {
                 checkToken: action.payload.token,
                 captchaImg: action.payload.img,
             };
-        case types.LOGIN_SUCCESS: {
+        case types.LOGIN_SUCCESS:{
             let {admin_id, admin_name, token} = action.payload;
 
             return {
@@ -58,7 +58,6 @@ export function user(state = initState, action) {
                 token: token
             };
         }
-
         case types.REGISTER_SUCCESS:
             return {
                 redirectTo: '/login',
@@ -91,7 +90,7 @@ export function user(state = initState, action) {
 
 export function fetchCaptcha() {
     return async dispatch => {
-        /*let res = await api.loginInterface.getCheckcode();
+        let res = await api.loginInterface.getCheckcode();
         if (!res) return;
         let {code, data} = res.data;
         if (code === 200) {
@@ -99,7 +98,7 @@ export function fetchCaptcha() {
                 type: types.FETCH_CAPTCHA,
                 payload: data
             });
-        }*/
+        }
     }
 }
 
@@ -109,12 +108,12 @@ export function fetchCaptcha() {
  */
 function getCheckcode() {
     return new Promise(async (resolve, reject) => {
-        /*let res = await api.loginInterface.getCheckcode();
+        let res = await api.loginInterface.getCheckcode();
         if (!res) return;
         let {code, data} = res.data;
         if (code === 200) {
             resolve(data)
-        }*/
+        }
     });
 }
 
@@ -128,11 +127,11 @@ function getCheckcode() {
  */
 export function login({username, password, captcha, checkToken}) {
     return async dispatch => {
-        /*let res = await api.loginInterface.getPublicKey();
+        let res = await api.loginInterface.getPublicKey();
         if (!res) return;
         let {code, data} = res.data;
         if (code === 200) {
-            let publicKey = data;
+            /*let publicKey = data;
             let encrypt = new JSEncrypt.JSEncrypt();
             encrypt.setPublicKey(publicKey);
 
@@ -171,8 +170,8 @@ export function login({username, password, captcha, checkToken}) {
             dispatch({
                 type: types.FETCH_CAPTCHA,
                 payload: Object.assign({}, getCode)
-            });
-        }*/
+            });*/
+        }
     }
 }
 
@@ -184,7 +183,7 @@ export function login({username, password, captcha, checkToken}) {
  */
 export function register({username, password}) {
     return async dispatch => {
-        /*let params = {
+        let params = {
             admin_name: username,
             admin_id: username,
             admin_pwd: password,
@@ -203,7 +202,7 @@ export function register({username, password}) {
             return false;
         }
 
-        message.error(msg);*/
+        message.error(msg);
     }
 }
 
