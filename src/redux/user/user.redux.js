@@ -149,7 +149,6 @@ export function login({username, password, captcha, checkToken}) {
             let {code, msg} = res_login.data;
             if (code === 200) {
                 message.success('登录成功！');
-
                 let {admin_id, admin_name, token} = res_login.data.data;
 
                 Cookies.set('admin_id', admin_id);
