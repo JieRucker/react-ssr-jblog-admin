@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import '../../node_modules/nprogress/nprogress.css'
-import NProgress from 'nprogress'
+// import NProgress from 'nprogress'
 import Cookies from 'js-cookie'
 import {message} from 'antd';
 
@@ -30,7 +30,7 @@ class BaseModule {
                     config.headers.Authorization = token;
                 }
 
-                NProgress.start();
+                // NProgress.start();
 
                 return config;
             }, err => {
@@ -40,7 +40,8 @@ class BaseModule {
 
         // respone拦截器
         this.instance.interceptors.response.use(response => {
-                NProgress.done();
+                // NProgress.done();
+
                 return response;
             }, err => {
                 let {response} = err;
@@ -53,7 +54,7 @@ class BaseModule {
 
                     window.location.href = '/login';
 
-                    NProgress.done();
+                    // NProgress.done();
 
                     return Promise.reject(response);
                 }

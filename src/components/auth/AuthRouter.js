@@ -8,19 +8,15 @@
 
 import React, {Component} from 'react'
 import {withRouter, Route, Redirect} from 'react-router-dom'
-import Cookeis from "js-cookie";
 
 @withRouter
 class AuthRouter extends Component {
     render() {
         const {component: Component, ...rest} = this.props;
-        let cookie = Cookeis.get('token');
 
         return (
             <Route {...rest} render={props => {
-                return cookie
-                    ? <Component {...props} />
-                    : <Redirect to="/login"/>
+                return <Component {...props} />
             }}/>
         )
     }

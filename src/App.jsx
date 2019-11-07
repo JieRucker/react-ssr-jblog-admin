@@ -5,42 +5,20 @@ import {
     NavLink, Route,
     BrowserRouter as Router,
 } from "react-router-dom";
-import {Helmet} from "react-helmet";
-import {router} from "./router";
+// import {Helmet} from "react-helmet";
 
 import AuthRouter from './components/auth/AuthRouter';
 import Login from './views/login/login';
 import Register from './views/login/register';
-import 'antd/dist/antd.css';
-
 import Index from './views/layout';
 import NotFound from './views/404/notFound';
-
+import 'antd/dist/antd.css';
 import "./assets/app.css";
-
-{/*<Router>
-    <div style={{height: '100%'}}>
-        <Switch>
-            <Route exact path="/" render={() => <Redirect to="/app/article/list" push/>}/>
-            <Route path="/login" component={Login}/>
-            <Route path="/register" component={Register}/>
-            <AuthRouter path='/app' component={Index}></AuthRouter>
-            <Route path='/404' component={NotFound}/>
-            <Redirect from='*' to='/404'/>
-        </Switch>
-    </div>
-</Router>*/
-}
 
 class App extends React.Component {
 
-    componentDidMount(){
-
-    }
-
     render() {
         return (
-
             <div style={{height: '100%'}}>
                 <Switch>
                     <Route exact path="/" render={() => <Redirect to="/app/article/list" push/>}/>
