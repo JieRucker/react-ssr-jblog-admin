@@ -16,7 +16,7 @@ const build_dev = {
 };
 const dev = {
   static_url: 'http://localhost:8091/', // 静态资源路径
-  common_url: 'http://api.jrucker.cn',
+  common_url: 'http://localhost:8091',
 };
 
 module.exports = {build, build_dev, dev};

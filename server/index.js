@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const ServerRenderer = require("./renderer");
 const app = express();
+const proxyMiddleware = require('http-proxy-middleware');
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -25,6 +26,21 @@ if (isProd) {
 }
 
 app.use("/public", express.static(path.join(__dirname, "../public")));
+
+const proxyTable = {
+    '/api': {
+        target: 'http://api.jrucker.cn',
+        changeOrigin: true
+    }
+};
+
+Object.keys(proxyTable).forEach(function (context) {
+    let options = proxyTable[context];
+    if (typeof options === 'string') {
+        options = {target: options}
+    }
+    app.use(proxyMiddleware(options.filter || context, options))
+});
 
 const render = (req, res) => {
   console.log("======enter server======");
@@ -53,6 +69,7 @@ app.get("*", isProd ? render : (req, res) => {
 	readyPromise.then(() => render(req, res));
 });
 
-app.listen(3000, () => {
-  console.log("Your app is running");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`server started at localhost:${port}`)
 });
