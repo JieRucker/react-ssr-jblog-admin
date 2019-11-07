@@ -43,9 +43,6 @@ Object.keys(proxyTable).forEach(function (context) {
 });
 
 const render = (req, res) => {
-  console.log("======enter server======");
-  console.log("visit url: " + req.url);
-
   // 此对象会合并然后传给服务端路由，不需要可不传
   const context = {};
 
@@ -69,7 +66,7 @@ app.get("*", isProd ? render : (req, res) => {
 	readyPromise.then(() => render(req, res));
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8091;
 app.listen(port, () => {
     console.log(`server started at localhost:${port}`)
 });
