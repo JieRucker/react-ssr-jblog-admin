@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const merge = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const LoadablePlugin = require("@loadable/webpack-plugin");
@@ -50,6 +51,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env.REACT_ENV": JSON.stringify("client")  // 指定React环境为服务端
+    }),
     // 生成 loadable-stats.json
     new LoadablePlugin()
   ]

@@ -153,7 +153,10 @@ export function login({username, password, captcha, checkToken}) {
 
                 Cookies.set('admin_id', admin_id);
                 Cookies.set('admin_name', admin_name);
-                Cookies.set('token', token);
+
+                Cookies.set('token', token, {
+                    expires: new Date(new Date().getTime() + 6 * 60 * 60 * 1000) // 6小时
+                });
 
                 dispatch({
                     type: types.LOGIN_SUCCESS,
