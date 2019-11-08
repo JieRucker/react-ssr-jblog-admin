@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {Form, Select, Input, Button, Table, Modal} from 'antd';
 import {getTagsList, getArticleList, deleteArticle, setStore} from '../../redux/article/list.redux';
-import {fatchTopList, setClientLoad} from "../../redux/actions";
 
 const {Option} = Select;
 
@@ -31,7 +30,6 @@ class ListForm extends Component {
     }
 
     componentDidMount() {
-        console.log(this);
         // this.getArticleList()
     }
 

@@ -42,7 +42,7 @@ export function about(state = initState, action) {
  * 获取设置信息
  * @returns {Function}
  */
-export function getSetting() {
+export function getAbout() {
     return async dispatch => {
         let res = await api.settingInterface.getSetting();
         if (!res) return;

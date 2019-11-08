@@ -9,14 +9,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {Form, Input, Button} from 'antd';
-import {getSetting, alterSetting, setStore} from '../../redux/setting/about.redux';
+import {getAbout, alterSetting, setStore} from '../../redux/setting/about.redux';
 
 const mapStateProps = state => ({
     about: state.about
 });
 
 const mapDispatchToProps = dispatch => ({
-    getSetting, alterSetting, setStore
+    getAbout, alterSetting, setStore
 });
 
 @connect(
@@ -32,8 +32,7 @@ class AboutForm extends Component {
     }
 
     componentDidMount() {
-        console.log(this);
-        this.props.getSetting()
+        // this.props.getAbout()
     }
 
     handleSave = () => {

@@ -9,14 +9,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {Form, Input, Button} from 'antd';
-import {getSetting, alterSetting, setStore} from '../../redux/setting/mine.redux';
+import {getMine, alterSetting, setStore} from '../../redux/setting/mine.redux';
 
 const mapStateProps = state => ({
     mine: state.mine
 });
 
 const mapDispatchToProps = dispatch => ({
-    getSetting, alterSetting, setStore
+    getMine, alterSetting, setStore
 });
 
 @connect(
@@ -32,8 +32,7 @@ class MineForm extends Component {
     }
 
     componentDidMount() {
-        console.log(this);
-        this.props.getSetting()
+        // this.props.getMine()
     }
 
     handleSave = () => {

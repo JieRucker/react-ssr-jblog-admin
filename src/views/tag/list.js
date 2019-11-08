@@ -38,7 +38,7 @@ class ListForm extends Component {
     };
 
     UNSAFE_componentWillMount() {
-        this.props.getTagsList()
+        // this.props.getTagsList()
     }
 
     handleCancel = () => {

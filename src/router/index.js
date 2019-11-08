@@ -1,5 +1,10 @@
 // import {fatchTopList, fetchTopDetail} from "../redux/actions";
 import {getArticleList} from "../redux/article/list.redux";
+import {getTagsList} from "../redux/tag/list.redux";
+import {getWorksList} from "../redux/works/list.redux";
+import {getAbout} from "../redux/setting/about.redux"
+import {getMine} from "../redux/setting/mine.redux"
+import {getUpyun} from "../redux/setting/upyun.redux"
 
 import loadable from "@loadable/component";
 
@@ -52,7 +57,10 @@ export const appRouter = [
             path: '/app/tag/list',
             title: '标签列表',
             icon: '',
-            component: loadable(() => import('../views/tag/list'))
+            component: loadable(() => import('../views/tag/list')),
+            asyncData(store) {
+                return store.dispatch(getTagsList());
+            }
         }],
     },
     {
@@ -63,7 +71,10 @@ export const appRouter = [
             path: '/app/works/list',
             title: '作品列表',
             icon: '',
-            component: loadable(() => import('../views/works/list'))
+            component: loadable(() => import('../views/works/list')),
+            asyncData(store) {
+                return store.dispatch(getWorksList({keyword: '', tag: '', state: '', current_page: 1, page_size: 10}));
+            }
         }, {
             path: '/app/works/new',
             title: '写作品',
@@ -90,17 +101,26 @@ export const appRouter = [
             path: '/app/setting/mine',
             title: '个人信息',
             icon: '',
-            component: loadable(() => import('../views/setting/mine'))
+            component: loadable(() => import('../views/setting/mine')),
+            asyncData(store) {
+                return store.dispatch(getMine());
+            }
         }, {
             path: '/app/setting/upyun',
             title: '又拍云',
             icon: '',
-            component: loadable(() => import('../views/setting/upyun'))
+            component: loadable(() => import('../views/setting/upyun')),
+            asyncData(store) {
+                return store.dispatch(getUpyun());
+            }
         }, {
             path: '/app/setting/about',
             title: '关于',
             icon: '',
-            component: loadable(() => import('../views/setting/about'))
+            component: loadable(() => import('../views/setting/about')),
+            asyncData(store) {
+                return store.dispatch(getAbout());
+            }
         }],
     }
 ];

@@ -9,14 +9,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {Form, Input, Button} from 'antd';
-import {getSetting, alterSetting, setStore} from '../../redux/setting/upyun.redux';
+import {getUpyun, alterSetting, setStore} from '../../redux/setting/upyun.redux';
 
 const mapStateProps = state => ({
     upyun: state.upyun
 });
 
 const mapDispatchToProps = dispatch => ({
-    getSetting, alterSetting, setStore
+    getUpyun, alterSetting, setStore
 });
 
 @connect(
@@ -32,8 +32,7 @@ class UpyunForm extends Component {
     }
 
     componentDidMount() {
-        console.log(this);
-        this.props.getSetting()
+        // this.props.getUpyun()
     }
 
     handleSave = () => {
