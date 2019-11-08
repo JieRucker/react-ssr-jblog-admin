@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import '../../node_modules/nprogress/nprogress.css'
-// import NProgress from 'nprogress'
+import NProgress from 'nprogress'
 import Cookies from 'js-cookie'
 import {message} from 'antd';
 
@@ -29,7 +29,9 @@ class BaseModule {
                     config.headers.Authorization = token;
                 }
 
-                // NProgress.start();
+                if (process.env.REACT_ENV === "client") {
+                    NProgress.start();
+                }
 
                 return config;
             }, err => {
@@ -39,21 +41,26 @@ class BaseModule {
 
         // respone拦截器
         this.instance.interceptors.response.use(response => {
-                // NProgress.done();
+            if (process.env.REACT_ENV === "client") {
+                NProgress.done();
+            }
 
                 return response;
             }, err => {
                 let {response} = err;
                 if (response.status === 401) {
-                    message.info(response.data.msg);
 
-                    Cookies.remove('token');  // token过期,清除
-                    Cookies.remove('admin_id');
-                    Cookies.remove('admin_name');
+                    if (process.env.REACT_ENV === "client") {
+                        message.info(response.data.msg);
 
-                    window.location.href = '/login';
+                        Cookies.remove('token');  // token过期,清除
+                        Cookies.remove('admin_id');
+                        Cookies.remove('admin_name');
 
-                    // NProgress.done();
+                        window.location.href = '/login';
+
+                        NProgress.done();
+                    }
 
                     return Promise.reject(response);
                 }
