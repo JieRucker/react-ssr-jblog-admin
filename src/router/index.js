@@ -1,4 +1,3 @@
-// import {fatchTopList, fetchTopDetail} from "../redux/actions";
 import {getArticleList} from "../redux/article/list.redux";
 import {getTagsList} from "../redux/tag/list.redux";
 import {getWorksList} from "../redux/works/list.redux";
@@ -135,7 +134,6 @@ export const appRouterMethod = (() => {
             if (item.sub && item.sub.length)
                 item.sub.map(sub => routes.push(sub))
         });
-
         return routes
     }
 })();
@@ -143,26 +141,6 @@ export const appRouterMethod = (() => {
 const router = [
     ...otherRouter,
     ...appRouterMethod(),
-    /*
-    {
-        path: "/foo",
-        component: loadable(() => import("../views/Foo"))
-    },
-    {
-        path: "/top-list",
-        component: loadable(() => import("../containers/TopList")),
-        exact: true,
-        asyncData(store) {
-            return store.dispatch(fatchTopList());
-        }
-    },
-    {
-        path: "/top-list/:id",
-        component: loadable(() => import("../containers/TopDetail")),
-        asyncData(store, params) {
-            return store.dispatch(fetchTopDetail(params.id));
-        }
-    }*/
 ];
 
 export {

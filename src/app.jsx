@@ -35,12 +35,6 @@ class App extends React.Component {
             //     <Helmet>
             //         <meta name="keywords" content="React SSR"></meta>
             //     </Helmet>
-            //     <ul className="nav">
-            //         <li><NavLink to="/bar">1</NavLink></li>
-            //         <li><NavLink to="/baz">2</NavLink></li>
-            //         <li><NavLink to="/foo">3</NavLink></li>
-            //         <li><NavLink to="/top-list">4</NavLink></li>
-            //     </ul>
             //     <div className="view">
             //         <Switch>
             //             {

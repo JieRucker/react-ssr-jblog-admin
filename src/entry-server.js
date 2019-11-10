@@ -3,7 +3,7 @@ import { StaticRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import createStore from "./redux/store";
 import { router } from "./router";
-import Root from "./App";
+import Root from "./app";
 
 const createApp = (context, url, store) => {
   const App = () => {
