@@ -13,11 +13,9 @@ class ServerRenderer {
   renderToString(request, staticContext) {
     return new Promise((resolve, reject) => {
       const serverEntry = this.serverEntry;
-
       const createApp = serverEntry.createApp;
       const createStore = serverEntry.createStore;
       const router = serverEntry.router;
-
       const store = createStore({});
 
       const render = () => {
