@@ -32,7 +32,7 @@ class AboutForm extends Component {
     }
 
     componentDidMount() {
-        // this.props.getAbout()
+        this.props.getAbout()
     }
 
     handleSave = () => {

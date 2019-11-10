@@ -33,7 +33,7 @@ export const appRouter = [
             title: '文章列表',
             icon: '',
             component: loadable(() => import('../views/article/list')),
-            asyncData(store) {
+            asyncData(store, params) {
                 return store.dispatch(getArticleList({
                     keyword: '',
                     tag: '',

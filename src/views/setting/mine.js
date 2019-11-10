@@ -32,7 +32,7 @@ class MineForm extends Component {
     }
 
     componentDidMount() {
-        // this.props.getMine()
+        this.props.getMine()
     }
 
     handleSave = () => {

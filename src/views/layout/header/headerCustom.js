@@ -6,7 +6,6 @@ import {
     Menu,
     Avatar
 } from 'antd'
-import Cookies from 'js-cookie'
 import './header.css'
 
 const {Header} = Layout;
@@ -16,12 +15,12 @@ class HeaderCustom extends Component {
         const menu = (
             <Menu>
                 <Menu.Item>
-          <span
-              className="user-logout"
-              onClick={this.props.loginOut}
-          >
-            退出登录
-          </span>
+                  <span
+                      className="user-logout"
+                      onClick={this.props.loginOut}
+                  >
+                    退出登录
+                </span>
                 </Menu.Item>
             </Menu>
         );
@@ -35,20 +34,18 @@ class HeaderCustom extends Component {
                 </Icon>
                 <div className="user-info">
                     {
-                        Cookies.get('token') ?
-                            <Dropdown
-                                placement="bottomCenter"
-                                overlay={menu}
-                            >
-                                <Avatar
-                                    className="user-avatar"
-                                    shape="square"
-                                    size="large"
-                                    icon="user"
-                                    style={{backgroundColor: '#87d068'}}
-                                />
-                            </Dropdown>
-                            : null
+                        <Dropdown
+                            placement="bottomCenter"
+                            overlay={menu}
+                        >
+                            <Avatar
+                                className="user-avatar"
+                                shape="square"
+                                size="large"
+                                icon="user"
+                                style={{backgroundColor: '#87d068'}}
+                            />
+                        </Dropdown>
                     }
                     <span style={{marginLeft: '5px'}}>{this.props.name}</span>
                 </div>

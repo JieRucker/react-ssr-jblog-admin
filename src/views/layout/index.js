@@ -9,10 +9,8 @@ import SiderCustom from './sider/siderCustom'
 import HeaderCustom from './header/headerCustom'
 import {router} from '../../router';
 import {loginOut, initUserInfo} from '../../redux/user/user.redux'
+import {initOpenMenu, siderOpenChange} from '../../redux/sider/sider.redux'
 import './index.css'
-
-// import {initOpenMenu, siderOpenChange} from '../../redux/sider/sider.redux'
-import {siderOpenChange} from '../../redux/sider/sider.redux'
 
 const {Content, Footer} = Layout;
 
@@ -21,13 +19,9 @@ const mapStateToProps = (state) => ({
     sider: state.sider
 });
 
-// const mapDispatchToProps = (dispatch) => ({
-//     loginOut, initUserInfo,
-//     initOpenMenu, siderOpenChange
-// });
 const mapDispatchToProps = (dispatch) => ({
     loginOut, initUserInfo,
-    siderOpenChange
+    initOpenMenu, siderOpenChange
 });
 
 @connect(
@@ -45,15 +39,15 @@ class Index extends Component {
 
     UNSAFE_componentWillMount() {
         this.props.initUserInfo(); // 初始化用户信息
-        // this.props.initOpenMenu();
-
-
+        if (process.env.REACT_ENV === "client") {
+            this.props.initOpenMenu();
+        }
     }
 
-    componentDidMount(){
-        setTimeout(() => {
+    componentDidMount() {
+        /*setTimeout(() => {
             this.setState(prevState => ({hidden: !prevState}))
-        }, 100)
+        }, 100)*/
     }
 
     loginOut = () => {
@@ -70,7 +64,21 @@ class Index extends Component {
     };
 
     render() {
-        return !this.state.hidden && (
+
+        const renderRouteFn = () => {
+            return router.map(({path, title, component: Component, ...props}) => (
+                <Route key={title}
+                       exact
+                       path={path}
+                       render={(props) => <Component {...props}/>}
+                       {...props}
+                />
+            ))
+        };
+
+        const renderRoute = renderRouteFn();
+
+        return (
             <div className="container">
                 <Layout>
                     <SiderCustom
@@ -94,16 +102,12 @@ class Index extends Component {
                             overflow: 'initial',
                             minHeight: 'initial'
                         }}>
-                            {Cookies.get('token') ?
-                                router.map(({path, title, component:Component, ...props}) => (
-                                    <Route key={title}
-                                           exact
-                                           path={path}
-                                           render={(props) => <Component {...props}/>}
-                                           {...props}
-                                    />
-                                ))
-                                : null}
+                            {
+                                process.env.REACT_ENV === "client" ?
+                                    Cookies.get('token') ?
+                                        renderRoute : null :
+                                    renderRoute
+                            }
                         </Content>
                         <Footer style={{textAlign: 'center'}}>
                             Copyright © J.Rucker 2018

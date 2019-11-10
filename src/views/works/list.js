@@ -30,7 +30,6 @@ class ListForm extends Component {
     }
 
     componentDidMount() {
-        console.log(this);
         this.getWorksList()
     }
 

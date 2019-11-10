@@ -32,7 +32,7 @@ class UpyunForm extends Component {
     }
 
     componentDidMount() {
-        // this.props.getUpyun()
+        this.props.getUpyun()
     }
 
     handleSave = () => {

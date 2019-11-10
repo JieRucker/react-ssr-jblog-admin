@@ -30,7 +30,7 @@ class ListForm extends Component {
     }
 
     componentDidMount() {
-        // this.getArticleList()
+        this.getArticleList()
     }
 
     getArticleList = () => {
