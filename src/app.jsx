@@ -2,7 +2,7 @@ import React from "react";
 import {
     Switch,
     Redirect,
-    NavLink, Route,
+    Route,
     BrowserRouter as Router,
 } from "react-router-dom";
 // import {Helmet} from "react-helmet";
@@ -29,7 +29,6 @@ class App extends React.Component {
                     <Redirect from='*' to='/404'/>
                 </Switch>
             </div>
-
 
             // <div>
             //     <Helmet>
