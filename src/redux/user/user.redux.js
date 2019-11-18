@@ -86,7 +86,6 @@ export function user(state = initState, action) {
 /**
  * dispatch
  */
-
 export function fetchCaptcha() {
     return async dispatch => {
         let res = await api.loginInterface.getCheckcode();
