@@ -20,11 +20,11 @@ class AuthRouter extends Component {
         return (
             <Route {...rest} render={props => {
 
-                if(REACT_ENV === 'client'){
+                if (REACT_ENV === 'client') {
                     return cookie
                         ? <Component {...props} />
                         : <Redirect to="/login"/>
-                }else{
+                } else {
                     return <Component {...props} />
                 }
 
